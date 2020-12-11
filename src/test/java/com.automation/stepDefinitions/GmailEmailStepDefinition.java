@@ -4,34 +4,35 @@ import com.automation.locators.HomePage;
 import com.automation.locators.LoginPage;
 import com.automation.utils.DriverUtils;
 import com.automation.utils.WaitHelpers;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import testData.TestData;
 
-public class GmailEmailStepDefinition {
+public class GmailEmailStepDefinition{
 
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
     private WebDriver driver;
 
-    @When("user is on Gmail loginButton page")
+    @When("user is on Gmail login page")
     public void user_is_on_gmail_login_page() {
         driver = DriverUtils.getBrowser("chrome");
         driver.get(TestData.URL);
+      //  PageFactory.initElements(driver,this);
     }
 
     @And("enter username and continue")
     public void enter_username_and_continue() {
+        WaitHelpers.waitUntilVisibility(loginPage.username);
         loginPage.username.sendKeys(TestData.USERNAME);
         loginPage.nextButton.click();
     }
 
-    @And("enter password and loginButton")
+    @And("enter password and login")
     public void enter_password_and_login() {
         loginPage.password.sendKeys(TestData.PASSWORD);
         WaitHelpers.waitUntilClickable(loginPage.loginButton);

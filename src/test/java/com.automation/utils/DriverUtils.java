@@ -14,11 +14,11 @@ public class DriverUtils {
     public static WebDriver getBrowser(String browser) {
 
         if (browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "F:\\Selenium Webdriver\\Drivers\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
             webdriver = new ChromeDriver();
 
         } else if (browser.equals("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "F:\\Selenium Webdriver\\Drivers\\geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", "path to geckodriver.exe");
             webdriver = new FirefoxDriver();
         }
 

@@ -1,11 +1,13 @@
 package com.automation.locators;
 
+import com.automation.utils.DriverUtils;
 import com.automation.utils.WaitHelpers;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import testData.TestData;
 
-public class HomePage {
+public class HomePage extends DriverUtils {
 
     @FindBy(xpath = "//*[@id=\":jm\"]/div/div")
     public WebElement composeButton;
@@ -24,6 +26,10 @@ public class HomePage {
 
     @FindBy(xpath = "/html/body/div[24]/div/div/div/div[1]/div[3]/div[1]/div[1]/div")
     public WebElement newMessageSection;
+
+    public HomePage(){
+        PageFactory.initElements(webdriver,this);
+    }
 
     public void composeEmail(){
         WaitHelpers.waitUntilVisibility(newMessageSection);
