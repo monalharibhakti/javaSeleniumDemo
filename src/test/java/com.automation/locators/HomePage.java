@@ -2,36 +2,38 @@ package com.automation.locators;
 
 import com.automation.utils.DriverUtils;
 import com.automation.utils.WaitHelpers;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import testData.TestData;
 
-public class HomePage extends DriverUtils {
+public class HomePage {
 
-    @FindBy(xpath = "//*[@id=\":jm\"]/div/div")
+    @FindBy(xpath = "//div[contains(text(),\"Compose\")]")
     public WebElement composeButton;
 
-    @FindBy(xpath= "//textarea[@aria-label=\"To\"]")
+    @FindBy(xpath= "//textarea[@aria-label='To']")
     public WebElement toField;
 
-    @FindBy(xpath = "//input[@name=\"subjectbox\"]")
+    @FindBy(xpath = "//input[@name='subjectbox']")
     public WebElement subjectField;
 
-    @FindBy(xpath = "//div[@role=\"textbox\"]")
+    @FindBy(xpath = "//div[@role='textbox']")
     public WebElement emailBody;
 
-    @FindBy(xpath = "//div[contains(text(),'Send') and @role=\"button\"]")
+    @FindBy(xpath = "//div[contains(text(),'Send') and @role='button']")
     public WebElement sendEmail;
 
-    @FindBy(xpath = "/html/body/div[24]/div/div/div/div[1]/div[3]/div[1]/div[1]/div")
+    @FindBy(xpath = "//div[contains(text(),'New Message')]")
     public WebElement newMessageSection;
 
-    public HomePage(){
-        PageFactory.initElements(webdriver,this);
+    public HomePage(WebDriver driver){
+        PageFactory.initElements(driver,this);
     }
 
     public void composeEmail(){
+        composeButton.click();
         WaitHelpers.waitUntilVisibility(newMessageSection);
         toField.sendKeys(TestData.TO_EMAIL);
         subjectField.sendKeys(TestData.SUBJECT);

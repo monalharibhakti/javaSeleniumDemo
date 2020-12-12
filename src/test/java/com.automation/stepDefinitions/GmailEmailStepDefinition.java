@@ -14,15 +14,16 @@ import testData.TestData;
 
 public class GmailEmailStepDefinition{
 
-    LoginPage loginPage = new LoginPage();
-    HomePage homePage = new HomePage();
+    LoginPage loginPage;
+    HomePage homePage ;
     private WebDriver driver;
 
     @When("user is on Gmail login page")
     public void user_is_on_gmail_login_page() {
         driver = DriverUtils.getBrowser("chrome");
         driver.get(TestData.URL);
-      //  PageFactory.initElements(driver,this);
+      loginPage = new LoginPage(driver);
+      homePage = new HomePage(driver);
     }
 
     @And("enter username and continue")
@@ -34,6 +35,7 @@ public class GmailEmailStepDefinition{
 
     @And("enter password and login")
     public void enter_password_and_login() {
+        WaitHelpers.waitUntilVisibility(loginPage.password);
         loginPage.password.sendKeys(TestData.PASSWORD);
         WaitHelpers.waitUntilClickable(loginPage.loginButton);
         loginPage.loginButton.click();

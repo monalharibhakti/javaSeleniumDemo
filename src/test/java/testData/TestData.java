@@ -4,9 +4,9 @@ public class TestData {
 
     public static final String URL = "http://gmail.com/";
 
-    public static final String USERNAME = "testUsername";
+    public static final String USERNAME = "monaltest8";
 
-    public static final String PASSWORD = "password";
+    public static final String PASSWORD = "monal1234";
 
     public static final String TO_EMAIL = "monalharibhakti@gmail.com";
 

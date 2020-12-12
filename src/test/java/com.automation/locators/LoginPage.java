@@ -2,12 +2,13 @@ package com.automation.locators;
 
 import com.automation.utils.DriverUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.v84.page.Page;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends DriverUtils {
+public class LoginPage {
 
     @FindBy(xpath = "//input[@type='email']")
     public WebElement username;
@@ -21,7 +22,7 @@ public class LoginPage extends DriverUtils {
     @FindBy(xpath = "//*[@id='passwordNext']/div/button")
     public WebElement loginButton;
 
-    public LoginPage(){
-        PageFactory.initElements(webdriver, this);
+    public LoginPage(WebDriver driver){
+        PageFactory.initElements(driver, this);
     }
 }
